@@ -4,6 +4,7 @@ import Titles from "./components/Titles"
 import Form from "./components/Form"
 import Weather from "./components/Weather"
 import {Container, Col, Row} from 'react-bootstrap';
+import translation from "./components/Translation"
 
 
 const API_KEY = "f525ab2b08b02345263cf7db59107bee"
@@ -17,9 +18,71 @@ class App extends Component {
     sunset: undefined,
     wind: undefined,
     description: undefined,
-    error: undefined
+    error: undefined,
 
   }
+translation= [...translation]
+
+  
+  // translation = [
+  // ["light rain", "lekki deszcz"],
+  // ["few clouds", "niewielkie zachmurzenie"],
+  // ["scattered clouds", "rozproszone chmury"],
+  // ["broken clouds", "przejaśnienia"],
+  // ["shower rain", "lekki deszcz"],
+  // ["rain", pl : "deszcz"],
+  // ["thunderstorm", "burza"],
+  // ["thunderstorm with rain", "burza i deszcz"],
+  // ["thunderstorm with heavy rain", "burza i deszcz"],
+  // ["light thunderstorm", "lekka burza"],
+  // ["heavy thunderstorm", "sroga burza z piorunami"],
+  // ["ragged thunderstorm", "przejściowe burze"],
+  // ["thunderstorm with light drizzle", "burza z lekką mżawką"],
+  // ["thunderstorm with drizzle", "burza z  mżawką"],
+  // ["thunderstorm with heavy drizzle", "burza z silną mżawką"],
+  // ["heavy intensity drizzle", "intensywna mżawka"],
+  // ["light intensity drizzle rain", "mżawka, deszcz, natężenie światła"],
+  // ["drizzle rain", n"deszcz, mżawka" ],
+  // ["heavy intensity drizzle rain", "intensywna mżawka"],
+  // ["shower rain and drizzle", "deszcz"],
+  // ["heavy shower rain and drizzle", "ulewny deszcz i mżawka"],
+  // ["shower drizzle", "mżawka"],
+  // ["drizzle", "mżawka"],
+  // ["light rain", "lekki deszcz"],
+  // ["moderate rain", "umiarkowane opady"],
+  // ["heavy intensity rain", "mocne opady deszczu"],
+  // ["very heavy rain", "mocne opady deszczu"],
+  // ["extreme rain", "ulewa"],
+  // ["freezing rain", "marznący deszcz"],
+  // ["light intensity shower rain", "lekki deszcz"],
+  // ["shower rain", "deszcz"],
+  // ["heavy intensity shower rain", "intensywny deszcz"],
+  // ["ragged shower rain", "przejściowe opady deszczu"],
+  // ["Snow", "śnieg"],
+  // ["Heavy snow", "Mocne opady śniegu"],
+  // ["Sleet", "śnieg z deszczem"],
+  // ["Light shower sleet", "śnieg z deszczem"],
+  // ["Shower sleet", "śnieg z deszczem"],
+  // ["Light rain and snow", "śnieg z deszczem"],
+  // ["Rain and snow", "deszcz i śnieg"],
+  // ["Light shower snow", "lekkie opady śniegu"],
+  // ["Shower snow", "lekki śnieg"],
+  // ["Heavy shower snow", "opady śniegu"],
+  // ["Smoke", "smog"],
+  // ["Haze", "mgła"],
+  // ["sand/ dust whirls", "wiry piasku / pyłu"],
+  // ["fog", "mgła"],
+  // ["sand", "piasek"],
+  // ["dust", "kurz"],
+  // ["volcanic ash", "pył wulkaniczny"],
+  // ["squalls", "szkwał"],
+  // ["tornado", "tornado"],
+  // ["scattered clouds", "rozproszone chmury"],
+  // ["broken clouds", "zachmurzenie z przejaśnieniami chmury"],
+  // ["overcast clouds", "duże zachmurzenie"],
+  // ["few clouds", "niewielkie zachmurzenie"],
+  // ["clear sky", "czyste niebo"],
+  // ]
 
   setSunrise = () => {
     var date = new Date(this.state.sunrise * 1000);
@@ -40,184 +103,18 @@ class App extends Component {
     this.setState({ city: newCity })
   }
 
-  translateDescription = () => {
-    if (this.state.description === "light rain") {
-      this.setState({ description: "lekki deszcz" })
-
-    } else if (this.state.description === "few clouds") {
-      this.setState({ description: "niewielkie zachmurzenie" })
-
-    } else if (this.state.description === "scattered clouds") {
-      this.setState({ description: "rozproszone chmury" })
-
-    } else if (this.state.description === "broken clouds") {
-      this.setState({ description: "przejaśnienia" })
-
-    } else if (this.state.description === "shower rain") {
-      this.setState({ description: "lekki deszcz" })
-
-    } else if (this.state.description === "rain") {
-      this.setState({ description: "deszcz" })
-
-    } else if (this.state.description === "thunderstorm") {
-      this.setState({ description: "burza" })
-
-    } else if (this.state.description === "thunderstorm with rain") {
-      this.setState({ description: "burza i deszcz" })
-
-    } else if (this.state.description === "thunderstorm with heavy rain") {
-      this.setState({ description: "burza i deszcz" })
-
-    } else if (this.state.description === "light thunderstorm") {
-      this.setState({ description: "lekka burza" })
-
-    } else if (this.state.description === "heavy thunderstorm") {
-      this.setState({ description: "ciężka burza z piorunami" })
-
-    } else if (this.state.description === "ragged thunderstorm") {
-      this.setState({ description: "przejściowe burze" })
-
-    } else if (this.state.description === "thunderstorm with light drizzle") {
-      this.setState({ description: "burza z lekką mżawką" })
-
-    } else if (this.state.description === "thunderstorm with drizzle") {
-      this.setState({ description: "burza z  mżawką" })
-
-    } else if (this.state.description === "thunderstorm with heavy drizzle") {
-      this.setState({ description: "burza z silną mżawką" })
-
-    } else if (this.state.description === "heavy intensity drizzle") {
-      this.setState({ description: "intensywna mżawka" })
-
-    } else if (this.state.description === "light intensity drizzle rain") {
-      this.setState({ description: "mżawka, deszcz, natężenie światła" })
-
-    } else if (this.state.description === "drizzle rain") {
-      this.setState({ description: "deszcz, mżawka" })
-
-    } else if (this.state.description === "heavy intensity drizzle rain") {
-      this.setState({ description: "intensywna mżawka" })
-
-    } else if (this.state.description === "shower rain and drizzle") {
-      this.setState({ description: "deszcz" })
-
-    } else if (this.state.description === "heavy shower rain and drizzle") {
-      this.setState({ description: "ulewny deszcz i mżawka" })
-
-    } else if (this.state.description === "shower drizzle") {
-      this.setState({ description: "mżawka" })
-    }
-
-    else if (this.state.description === "drizzle") {
-      this.setState({ description: "mżawka" })
-
-    } else if (this.state.description === "light rain") {
-      this.setState({ description: "lekki deszcz" })
-
-    } else if (this.state.description === "moderate rain") {
-      this.setState({ description: "umiarkowane opady" })
-
-    } else if (this.state.description === "heavy intensity rain") {
-      this.setState({ description: "mocne opady deszczu" })
-
-    } else if (this.state.description === "very heavy rain") {
-      this.setState({ description: "mocne opady deszczu" })
-
-    } else if (this.state.description === "extreme rain") {
-      this.setState({ description: "ulewa" })
-
-    } else if (this.state.description === "freezing rain") {
-      this.setState({ description: "marznący deszcz" })
-
-    } else if (this.state.description === "light intensity shower rain") {
-      this.setState({ description: "lekki deszcz" })
-
-    } else if (this.state.description === "shower rain") {
-      this.setState({ description: "deszcz" })
-    }
-
-    else if (this.state.description === "heavy intensity shower rain") {
-      this.setState({ description: "intensywny deszcz" })
-
-    } else if (this.state.description === "ragged shower rain") {
-      this.setState({ description: "przejściowe opady deszczu" })
-
-    } else if (this.state.description === "Snow") {
-      this.setState({ description: "śnieg" })
-
-    } else if (this.state.description === "Heavy snow") {
-      this.setState({ description: "Mocne opady śniegu" })
-
-    } else if (this.state.description === "Sleet") {
-      this.setState({ description: "śnieg z deszczem" })
-
-    } else if (this.state.description === "Light shower sleet") {
-      this.setState({ description: "śnieg z deszczem" })
-
-    } else if (this.state.description === "Shower sleet") {
-      this.setState({ description: "śnieg z deszczem" })
-
-    } else if (this.state.description === "Light rain and snow") {
-      this.setState({ description: "śnieg z deszczem" })
-
-    } else if (this.state.description === "Rain and snow") {
-      this.setState({ description: "deszcz i śnieg" })
-
-    } else if (this.state.description === "Light shower snow") {
-      this.setState({ description: "lekkie opady śniegu" })
-
-    } else if (this.state.description === "Shower snow") {
-      this.setState({ description: "lekki śnieg" })
-
-    } else if (this.state.description === "Heavy shower snow") {
-      this.setState({ description: "opady śniegu" })
-
-    } else if (this.state.description === "Smoke") {
-      this.setState({ description: "smog" })
-
-    } else if (this.state.description === "Haze") {
-      this.setState({ description: "mgła" })
-
-    } else if (this.state.description === "sand/ dust whirls") {
-      this.setState({ description: "wiry piasku / pyłu" })
-
-    } else if (this.state.description === "fog") {
-      this.setState({ description: "mgła" })
-
-    } else if (this.state.description === "sand") {
-      this.setState({ description: "piasek" })
-
-    } else if (this.state.description === "dust") {
-      this.setState({ description: "kurz" })
-
-    } else if (this.state.description === "volcanic ash") {
-      this.setState({ description: "pył wulkaniczny" })
-
-    } else if (this.state.description === "squalls") {
-      this.setState({ description: "szkwał" })
-
-    } else if (this.state.description === "tornado") {
-      this.setState({ description: "tornado" })
-
-    } else if (this.state.description === "scattered clouds") {
-      this.setState({ description: "rozproszone chmury" })
-
-    } else if (this.state.description === "broken clouds") {
-      this.setState({ description: "zachmurzenie z przejaśnieniami chmury" })
-
-    } else if (this.state.description === "overcast clouds") {
-      this.setState({ description: "duże zachmurzenie" })
-
-    } else if (this.state.description === "few clouds") {
-      this.setState({ description: "niewielkie zachmurzenie" })
-
-    } else if (this.state.description === "clear sky") {
-      this.setState({ description: "czyste niebo" })
-
-    }
-  }
-
-
+  translateDescription = () => { 
+ let translation = this.translation;
+for (var i = 0; i < translation.length; i++) {  
+ var innerArray = [...translation[i]];
+    // console.log(innerArray);
+if(this.state.description === innerArray[0] ){
+      this.setState({
+        description : innerArray[1]
+      })
+      }
+    }}
+  
 
   getWeather = async (e) => {
     e.preventDefault()
@@ -284,7 +181,6 @@ class App extends Component {
 
 
   render() {
-
     return (
   
 
